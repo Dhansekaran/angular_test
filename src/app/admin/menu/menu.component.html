@@ -1,0 +1,48 @@
+<div class="inner_template">
+    <div class="left-side-menu">
+    	<div class="site_logo">
+    		<a href="http://demo.engagedots.com/">
+	            <img src="/assets/images/logo/scooti_logo.png" alt="test" />
+	        </a>
+    	</div>
+    	<div class="menu_list">
+    		<ul class="main_menu">
+                <li *ngFor="let menu_item of menu_list;" [ngClass]="{'active':active_mainmenu==menu_item.menu_name}" >
+                    <a href="{{menu_item.menu_link}}" *ngIf="menu_item.submenu.length == 0" >
+                        <fa-icon [icon]="menu_item.menu_icon"></fa-icon>
+                        <span>{{menu_item.menu_name}}</span>
+                    </a>
+                    <a *ngIf="menu_item.submenu.length > 0" (click)="menuchange(menu_item.menu_name,1)">
+                        <fa-icon [icon]="menu_item.menu_icon"></fa-icon>
+                        <span>{{menu_item.menu_name}}</span>
+                        <i></i>
+                    </a>
+                    
+                    <ul class="sub_menu" *ngIf="menu_item.submenu.length > 0">
+                        <li *ngFor="let submenu_item of menu_item.submenu;" [ngClass]="{'active':active_submenu==submenu_item.menu_name}" >
+                            <a href="{{submenu_item.menu_link}}" *ngIf="submenu_item.submenu.length == 0" >
+                                <span>{{submenu_item.menu_name}}</span>
+                            </a>
+                            <a *ngIf="submenu_item.submenu.length > 0" (click)="menuchange(submenu_item.menu_name,2)">
+                                <span>{{submenu_item.menu_name}}</span>
+                                <i></i>
+                            </a>
+
+                            <ul class="child_menu" *ngIf="submenu_item.submenu.length > 0">
+                                <li *ngFor="let childmenu_item of submenu_item.submenu;" [ngClass]="{'active':active_childmenu==childmenu_item.menu_name}" >
+                                    <a href="{{childmenu_item.menu_link}}" *ngIf="childmenu_item.submenu.length == 0" >
+                                        <span>{{childmenu_item.menu_name}}</span>
+                                    </a>
+                                    <a *ngIf="childmenu_item.submenu.length > 0" (click)="menuchange(childmenu_item.menu_name,3)">
+                                        <span>{{childmenu_item.menu_name}}</span>
+                                        <i></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+    		</ul>
+    	</div>
+    </div>
+</div>

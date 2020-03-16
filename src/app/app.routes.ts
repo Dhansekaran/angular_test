@@ -1,15 +1,14 @@
 import { Routes } from '@angular/router';
-
 import { HomeComponent } from '@src/app/home/home.component';
 
 export const routes: Routes = [
   {
       path: '',
-      redirectTo: '/home',
-      pathMatch: 'full',
-  },
-  {
-      path: 'home',
       component: HomeComponent,
   },
+  {
+      path: 'admin',
+      loadChildren: () => import('@src/app/admin/admin.module').then(m => m.AdminModule) 
+  }
 ];
+export class adminRoutingModule { }
